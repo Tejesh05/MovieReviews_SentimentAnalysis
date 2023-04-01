@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+<section></section>
+<div id="result">
+    <h2 id="result-text"></h2>
+    <img id="result-img">
+  </div>  
+<script>
+const sentiment = '{{ sentiment }}'; 
+const resultText = document.getElementById('result-text'); 
+const resultImg = document.getElementById('result-img'); 
+const resultDiv = document.getElementById('result'); 
+
+if (sentiment == 'pos') {
+  resultText.innerText = 'Thank you for your positive review!'; 
+  resultImg.src = "{% static 'image/yes.png' %}"; 
+  /*resultDiv.classList.add('positive');*/ 
+} else {
+  resultText.innerText = 'We apologize for the negative experience.'; 
+  resultImg.src = "{% static 'image/no.png' %}"; 
+  /*resultDiv.classList.add('neg'); */
+}
+
+resultDiv.classList.add('animate'); 
+
+/*setTimeout(function() {
+  window.location.href = '{% url "predict_sentiment" %}';
+}, 5000);*/
+setTimeout(function() {
+  result.classList.remove('animate');
+  setTimeout(function() {
+    window.location.href = '{% url "predict_sentiment" %}';
+  }, 500);
+}, 6000);
+</script>
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block content %}
+<section></section>
+    <div class="container">
+        <form method="POST" action="{% url 'predict_sentiment' %}">
+            {% csrf_token %}
+            <h1>
+                Give Your Movie Review!
+            </h1>
+            <div class="id">
+                <input type="text" placeholder="Full name" name="user">
+                <i class="far fa-user"></i>
+            </div>                                                                          
+            <div class="id">
+                <input type="email" placeholder="email" name="email">
+                <i class="far fa-envelope"></i>
+            </div>
+            <textarea cols="15" rows="5" placeholder="Enter your movie review here....." name="review"></textarea>
+            <button>Send</button>
+        </form>
+    </div>
+{% endblock %}
